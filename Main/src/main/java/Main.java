@@ -3,15 +3,13 @@ public class Main {{}
 
         int inputVal = 124; //Integer.parseInt(args[1]);
 
-        if( (inputVal % 2 == 0) && (inputVal != 2)) {
-            System.out.println(inputVal + " is not Prime");
-        }
-        else if ( (inputVal % 3 == 0) && (inputVal != 3)) {
+        if((inputVal % 2 == 0) || (inputVal % 3 == 0)) {
             System.out.println(inputVal + " is not Prime");
         }
         else {
-            for (int i = 5; i < inputVal; i += 2) {
-                if (inputVal % i == 0) {
+            // all primes are of the form 6k ± 1, with the exception of 2 and 3
+            for (int i = 5; i * i <= inputVal; i = i + 6) {
+                if ((inputVal % i == 0) || (inputVal % (i+2) == 0)) {
                     System.out.println(inputVal + " is not Prime");
                 }
             }
